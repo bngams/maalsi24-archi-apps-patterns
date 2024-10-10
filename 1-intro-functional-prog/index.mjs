@@ -1,22 +1,8 @@
-// Fonction qui calcule la somme des carrés des nombres pairs
-function sumOfSquaresOfEvens(arr) {
-    let sum = 0;
-    arr.forEach(i => {
-        if (isEven(i)) {
-            sum += square(i);
-        }
-    });
-    return sum;
-}
-
-// Fonction qui calcule la somme des cubes des nombres impairs
-function sumOfCubesOfOdds(arr) {
-    let sum = 0;
-    arr.forEach(i => isOdd(i) ? sum += cube(i) : null);
-    return sum;
-
-    // better one liner..
-    // return arr.reduce...()
+// Fonction réutilisable qui applique une opération à tous les éléments filtrés
+function sumOfTransformedNumbers(arr, filterFn, transformFn) {
+    return arr
+        .filter(filterFn)
+        .reduce((sum, num) => sum + transformFn(num), 0);
 }
 
 // Filtre pour les nombres pairs
@@ -41,6 +27,6 @@ function cube(num) {
 
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-console.log(sumOfSquaresOfEvens(numbers)); // 220
-console.log(sumOfCubesOfOdds(numbers));    // 1539
-
+// Utilisation du code refactorisé
+console.log(sumOfTransformedNumbers(numbers, isEven, square)); // 220
+console.log(sumOfTransformedNumbers(numbers, isOdd, cube));    // 1225
