@@ -1,7 +1,9 @@
 
 import { MongoClient, ServerApiVersion } from 'mongodb';
-// TODO: connection string params as ENV  VARIABLES
-const uri = "mongodb+srv://boris:WH12U5XkDINCq71V@cluster0.8ovqm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+
+import 'dotenv/config'
+
+const uri = process.env.MONGO_CONN_STRING;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
