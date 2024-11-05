@@ -18,25 +18,25 @@ export class TodoServiceController {
 
   // GET :id
   @Get(':id')
-  findOne(@Param('id') id: string) {
-
+  findOne(@Param('id') id: string): Promise<Todo> {
+    return this.todoServiceService.findOneTodo(id);
   } 
 
   // POST
   @Post()
   create(@Body() todo: Todo): Promise<Todo> {
-    return this.todoServiceService.insertTodo(todo);
+    return this.todoServiceService.saveTodo(todo);
   } 
 
   // UPDATE
   @Patch()
-  update(@Body() todo: Todo) {
-
+  update(@Body() todo: Todo): Promise<Todo> {
+    return this.todoServiceService.saveTodo(todo);
   } 
 
   // DELETE
   @Delete(':id')
   delete(@Param('id') id: string) {
-
+    this.todoServiceService.deleteTodo(id);
   } 
 }

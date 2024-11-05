@@ -19,8 +19,16 @@ export class TodoServiceService {
   async findAllTodos(): Promise<Todo[]> {
     return await this.todoRepository.find();
   } 
+
+  async findOneTodo(id: string): Promise<Todo> {
+    return await this.todoRepository.findOne({ where: { id } })
+  } 
   
-  async insertTodo(todo: Todo): Promise<Todo> {
+  async saveTodo(todo: Todo): Promise<Todo> {
     return await this.todoRepository.save(todo);
+  }
+
+  async deleteTodo(id: string): Promise<void> {
+    await this.todoRepository.delete(id);
   }
 }

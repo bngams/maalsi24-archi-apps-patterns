@@ -10,15 +10,25 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Get('/todo')
-  async getHelloFromTodo(): Promise<string> {
-    // j'interroge le todo-service, je stocke la reponse dans result
-    const result: Response = await fetch('http://localhost:3001');
-    return result.text();
-  }
-
   @Get('/welcome/:name')
   welcome(@Param('name') name: string): string {
     return this.appService.sayWelcome(name);
   }
+
+
+
+  @Get('/todo/welcome')
+  async getHelloFromTodo(): Promise<string> {
+    // j'interroge le todo-service, je stocke la reponse dans result
+    const result: Response = await fetch('http://localhost:3001/welcome');
+    return result.text();
+  }
+
+  @Get('/todo')
+  async getAllTodos(): Promise<string> {
+    // j'interroge le todo-service, je stocke la reponse dans result
+    const result: Response = await fetch('http://localhost:3001');
+    return result.json();
+  }
+
 }
