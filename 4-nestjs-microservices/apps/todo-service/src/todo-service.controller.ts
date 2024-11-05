@@ -31,6 +31,8 @@ export class TodoServiceController {
   // UPDATE
   @Patch()
   update(@Body() todo: Todo): Promise<Todo> {
+    if (!todo.id) return; // error 404
+    // if (!todoServiceService.exists(todo.id)) return; // error 404
     return this.todoServiceService.saveTodo(todo);
   } 
 
