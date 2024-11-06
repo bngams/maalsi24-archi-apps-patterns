@@ -1,21 +1,23 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { UsersService } from './modules/users/users.service';
 import { User } from './modules/users/entities/user.entity';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthServiceService {
-  constructor(private usersService: UsersService) {}
+  constructor(
+    private usersService: UsersService,
+    private jwtService: JwtService,
+  ) {}
 
-  async signIn(username: string, pass: string): Promise<any> {
+  async signIn(username: string, pass: string): Promise<string> {
     const user = await this.usersService.findOne(username);
     if (await !this.usersService.hashCompare(pass, user.password)) {
       throw new UnauthorizedException();
     }
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { password, ...result } = user;
-    // TODO: Generate a JWT and return it here
-    // instead of the user object
-    return result;
+    // gen token with payload
+    const payload = { id: user.id, username: user.username };
+    return this.jwtService.sign(payload);
   }
 
   async signUp(user: User): Promise<Partial<User>> {
