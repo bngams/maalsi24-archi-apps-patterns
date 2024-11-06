@@ -28,7 +28,7 @@ export class AppController {
   async getAllTodos(): Promise<string> {
     // j'interroge le todo-service, je stocke la reponse dans result
     const result: Response = await fetch('http://localhost:3001');
-    return result.json();
+    return result.text();
   }
 
 }

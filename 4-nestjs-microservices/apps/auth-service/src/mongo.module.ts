@@ -1,5 +1,6 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
+import { User } from "./modules/users/entities/user.entity";
 
 @Module({
   imports: [
@@ -8,7 +9,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
       url: 'mongodb+srv://boris:WH12U5XkDINCq71V@cluster0.8ovqm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
       database: 'auth',
       logging: true,
-      entities: []
+      entities: [User]
     }),
   ], 
   exports: [TypeOrmModule] 

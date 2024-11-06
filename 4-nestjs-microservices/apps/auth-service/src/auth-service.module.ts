@@ -7,7 +7,7 @@ import { UsersModule } from './modules/users/users.module';
 @Module({
   imports: [
     MongoModule,
-    UsersModule
+    UsersModule // UsersService
   ],
   controllers: [AuthServiceController],
   providers: [AuthServiceService],
