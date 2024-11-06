@@ -4,7 +4,6 @@ import { User } from './modules/users/entities/user.entity';
 
 @Injectable()
 export class AuthServiceService {
-
   constructor(private usersService: UsersService) {}
 
   async signIn(username: string, pass: string): Promise<any> {
@@ -12,7 +11,8 @@ export class AuthServiceService {
     if (await !this.usersService.hashCompare(pass, user.password)) {
       throw new UnauthorizedException();
     }
-    const { password, ...result } = user; 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { password, ...result } = user;
     // TODO: Generate a JWT and return it here
     // instead of the user object
     return result;
@@ -27,7 +27,7 @@ export class AuthServiceService {
 
     // user creation
     user = await this.usersService.create(user);
-    const { password, ...result } = user; 
+    const { password, ...result } = user;
     return result;
   }
 }

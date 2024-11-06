@@ -8,9 +8,9 @@ import { Todo } from './entities/todo.entity';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({isGlobal: true}),
-    MongoModule, 
-    TypeOrmModule.forFeature([Todo])
+    ConfigModule.forRoot({ isGlobal: true }),
+    MongoModule,
+    TypeOrmModule.forFeature([Todo]),
   ],
   controllers: [TodoServiceController],
   providers: [TodoServiceService],

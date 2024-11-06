@@ -1,6 +1,6 @@
-import { Module } from "@nestjs/common";
-import { TypeOrmModule } from "@nestjs/typeorm";
-import { Todo } from "./entities/todo.entity";
+import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Todo } from './entities/todo.entity';
 
 @Module({
   imports: [
@@ -9,9 +9,9 @@ import { Todo } from "./entities/todo.entity";
       url: 'mongodb+srv://boris:WH12U5XkDINCq71V@cluster0.8ovqm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
       database: 'todos',
       logging: true,
-      entities: [Todo]
+      entities: [Todo],
     }),
-  ], 
-  exports: [TypeOrmModule] 
+  ],
+  exports: [TypeOrmModule],
 })
-export class MongoModule {} 
+export class MongoModule {}

@@ -15,8 +15,6 @@ export class AppController {
     return this.appService.sayWelcome(name);
   }
 
-
-
   @Get('/todo/welcome')
   async getHelloFromTodo(): Promise<string> {
     // j'interroge le todo-service, je stocke la reponse dans result
@@ -30,5 +28,4 @@ export class AppController {
     const result: Response = await fetch('http://localhost:3001');
     return result.text();
   }
-
 }

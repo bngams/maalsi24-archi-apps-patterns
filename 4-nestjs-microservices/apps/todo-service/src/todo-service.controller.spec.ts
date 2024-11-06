@@ -11,7 +11,9 @@ describe('TodoServiceController', () => {
       providers: [TodoServiceService],
     }).compile();
 
-    todoServiceController = app.get<TodoServiceController>(TodoServiceController);
+    todoServiceController = app.get<TodoServiceController>(
+      TodoServiceController,
+    );
   });
 
   describe('root', () => {

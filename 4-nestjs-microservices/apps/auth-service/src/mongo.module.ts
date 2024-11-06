@@ -1,6 +1,6 @@
-import { Module } from "@nestjs/common";
-import { TypeOrmModule } from "@nestjs/typeorm";
-import { User } from "./modules/users/entities/user.entity";
+import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { User } from './modules/users/entities/user.entity';
 
 @Module({
   imports: [
@@ -9,9 +9,9 @@ import { User } from "./modules/users/entities/user.entity";
       url: 'mongodb+srv://boris:WH12U5XkDINCq71V@cluster0.8ovqm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
       database: 'auth',
       logging: true,
-      entities: [User]
+      entities: [User],
     }),
-  ], 
-  exports: [TypeOrmModule] 
+  ],
+  exports: [TypeOrmModule],
 })
-export class MongoModule {} 
+export class MongoModule {}

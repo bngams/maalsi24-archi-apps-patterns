@@ -5,11 +5,10 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class TodoServiceService {
-
   // We use constructor with dependency injection pattern
   // to ask nest to create a Todo Repository for us with typeORM
   constructor(
-    @InjectRepository(Todo) private todoRepository: Repository<Todo>
+    @InjectRepository(Todo) private todoRepository: Repository<Todo>,
   ) {}
 
   getHello(): string {
@@ -18,12 +17,12 @@ export class TodoServiceService {
 
   async findAllTodos(): Promise<Todo[]> {
     return await this.todoRepository.find();
-  } 
+  }
 
   async findOneTodo(id: string): Promise<Todo> {
-    return await this.todoRepository.findOne({ where: { id } })
-  } 
-  
+    return await this.todoRepository.findOne({ where: { id } });
+  }
+
   async saveTodo(todo: Todo): Promise<Todo> {
     return await this.todoRepository.save(todo);
   }

@@ -1,13 +1,13 @@
-import { Column, Entity, ObjectIdColumn } from "typeorm";
+import { Column, Entity, ObjectIdColumn } from 'typeorm';
 
-@Entity({name: 'todos'}) 
+@Entity({ name: 'todos' })
 export class Todo {
-    @ObjectIdColumn()
-    id: string;
+  @ObjectIdColumn()
+  id: string;
 
-    @Column() 
-    title: string;
-    
-    @Column()
-    status: string; 
-} 
+  @Column()
+  title: string;
+
+  @Column()
+  status: string;
+}
