@@ -1,0 +1,41 @@
+# version: 3
+
+# containers
+services:
+  # container name 
+  app:
+    image: python-app-redis
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - SAMPLE=value
+    ports:
+      - 5000:5000
+    volumes:
+      - ./data:/code/data # bind mount (link my data local folder to a /data)
+      - my-docker-volume:/code/data # managed volume  
+    networks:
+      - app-redis
+  redis:
+    image: redis:7.0.15-alpine
+    networks:
+      - app-redis
+
+# networks
+networks:
+  app-redis:
+    name: my-network-app-redis
+
+# volumes
+volumes:
+  my-docker-volume:
+    # external: true # if volume already created outside compose 
+      
+
+# config
+# secrets
+
+
+
+  
