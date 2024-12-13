@@ -1,0 +1,35 @@
+# TODO: /!\ THIS DOCKERFILE IS JUST FOR TESTING PURPOSE, NOT OPTIMIZED
+
+services:
+  gateway-service:
+    build:
+      context: .
+      dockerfile: ./apps/gateway-service/Dockerfile.dev
+    ports:
+      - "3000:3000" # Map container port 3000 to host port 3000
+    networks:
+      - nest
+    depends_on:
+      - auth-service
+      - todo-service
+
+  todo-service:
+    container_name: todo-service
+    hostname: todo-service
+    build:
+      context: .
+      dockerfile: ./apps/todo-service/Dockerfile.dev
+    networks:
+      - nest
+
+  auth-service:
+    hostname: auth-service
+    build:
+      context: .
+      dockerfile: ./apps/auth-service/Dockerfile.dev
+    networks:
+      - nest
+
+networks:
+  nest:
+    name: nest
